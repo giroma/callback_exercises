@@ -163,7 +163,7 @@ console.log( 'The total number of sales is:', numSales);
 */
 var numPurchases = transactions.filter(function(element) {
   return element.type === 'purchase';
-}).length;;
+}).length;
 
 console.log( 'The total number of purchases is:', numPurchases );
 
@@ -177,7 +177,9 @@ console.log( 'The total number of purchases is:', numPurchases );
   HINT(S):
   - Don't forget that 'purchases' can also be made in 'cash'!
 */
-var numCashSales;
+var numCashSales = transactions.filter(function(element) {
+  return element.type === 'sale' && element.paymentMethod === 'cash';
+}).length;
 
 console.log( 'The total number of cash sales is:', numCashSales );
 
@@ -191,7 +193,9 @@ console.log( 'The total number of cash sales is:', numCashSales );
   HINT(S):
   - Make sure to exclude any 'sales' made by 'credit'!
 */
-var numCreditPurchases;
+var numCreditPurchases = transactions.filter(function(element) {
+  return element.type === 'purchase' && element.paymentMethod === 'credit';
+}).length;
 
 console.log( 'The total number of credit purchases is:', numCreditPurchases );
 
@@ -208,9 +212,20 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - This array is allowed to contain duplicate values.
 */
-var uniqueVendors;
-
-console.log( 'The unique vendors are:', uniqueVendors );
+// var uniqueVendors = transactions.filter(function(element) {
+//   if (element.vendor){
+//     return element
+//   };
+// }).map(function(element) {
+//   return element.vendor
+// });
+var vendors = []
+var uniqueVendors = transactions.forEach(function(element) {
+   if (element.vendor) {
+     vendors.push(element.vendor);
+  }
+})
+console.log( 'The unique vendors are:', vendors );
 
 
 // --------------------------------------------------
