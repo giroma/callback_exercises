@@ -161,7 +161,9 @@ console.log( 'The total number of sales is:', numSales);
 /*
   Calculate the total number of 'purchases'.
 */
-var numPurchases;
+var numPurchases = transactions.filter(function(element) {
+  return element.type === 'purchase';
+}).length;;
 
 console.log( 'The total number of purchases is:', numPurchases );
 
