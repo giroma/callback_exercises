@@ -240,11 +240,21 @@ console.log( 'The unique vendors are:', vendors );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - Make sure that the resulting array *does not* include any duplicates.
 */
-var uniqueCustomers;
+// var customers = []
+// var uniqueCustomers = transactions.forEach(function(element, index) {
+//    if (element.customer) {
+//      customers.push(element.customer)
+//   }
+// })
+
+var uniqueCustomers = transactions.map(function(element) {
+  return element.customer
+}).filter(function(element, index, self) {
+  return element && self.indexOf(element) === index
+});
 
 console.log( 'The unique customers are:', uniqueCustomers );
-
-
+// && transactions.indexOf(element) == index;
 // --------------------------------------------------
 // QUESTION 07
 // --------------------------------------------------
