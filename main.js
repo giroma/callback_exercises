@@ -163,9 +163,9 @@ console.log( 'The total number of sales is:', numSales);
 */
 var numPurchases = transactions.filter(function(element) {
   return element.type === 'purchase';
-}).length;
+});
 
-console.log( 'The total number of purchases is:', numPurchases );
+console.log( 'The total number of purchases is:', numPurchases.length );
 
 
 // --------------------------------------------------
@@ -288,7 +288,7 @@ console.log( 'The "big spenders" are:', bigSpenders );
 */
 var sumSales = transactions[0].items.reduce(function(sum, element) {
   return sum.price + element.price
-}, 0);
+});
 
 console.log( 'The sum of all sales is:', sumSales );
 
@@ -303,8 +303,18 @@ console.log( 'The sum of all sales is:', sumSales );
   - Your solution to 'QUESTION 08' is a good starting point!
   - Make sure to include 'price' information from *all* purchases.
 */
+function sumTransaction(object) {
+  return object.items.reduce(function(sum, element) {
+    return sum + element.price
+  },0)
+}
 
-var sumPurchases;
+//grab purchases array from earlier
+var sumPurchases = numPurchases.reduce(function(sum, element) {
+
+  return sum + sumTransaction(element)
+
+}, 0)
 
 console.log( 'The sum of all purhcases is:', sumPurchases );
 
@@ -322,7 +332,7 @@ console.log( 'The sum of all purhcases is:', sumPurchases );
   HINT(S):
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
-var netProfit;
+var netProfit ;
 
 console.log( 'The net profit is:', netProfit );
 
