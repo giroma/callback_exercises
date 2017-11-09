@@ -286,7 +286,9 @@ console.log( 'The "big spenders" are:', bigSpenders );
   HINT(S):
   - Transactions don't have 'prices', but their 'items' do!
 */
-var sumSales;
+var sumSales = transactions[0].items.reduce(function(sum, element) {
+  return sum.price + element.price
+}, 0);
 
 console.log( 'The sum of all sales is:', sumSales );
 
